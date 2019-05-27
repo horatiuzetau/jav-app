@@ -27,5 +27,8 @@ Dupa ce am terminat si testat intrarea cu baze de date, am facut functia de LOGI
 
 ### Alex
 
+In android studio am creat pagina de start care este un layout care contine o lista de anunturi cate unul pe rand , un anunt este alcatuit dintr o imagine si un txt in drapta ,imaginea fiind una dintre imaginele anuntului iar txt-ul fiind o parte din descriere.
+Cand facem click pe un anunt din aceasta lista se deschide anuntul propiu zis care este alcatuit dintr-un scroll viwe de imagini un txt care reprezinta descrierea un timer care arata cand timp mai este pana anuntul va fi inchis ,pretul actual al licitatie si un loc in care poti face bid.
+
 
 ### Teo
