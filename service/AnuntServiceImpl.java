@@ -4,6 +4,7 @@ import models.Anunt;
 import models.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnuntServiceImpl implements AnuntService {
@@ -87,8 +88,6 @@ public class AnuntServiceImpl implements AnuntService {
         return pstm;
     }
 
-
-
     @Override
     public Anunt findById(int id) {
 
@@ -135,11 +134,101 @@ public class AnuntServiceImpl implements AnuntService {
 
     @Override
     public List<Anunt> getAnunturi() {
-        return null;
+
+        List<Anunt > anunturiToReturn = new ArrayList<>();
+
+        //Pornim conexiunea si creem PreparedStatement
+        try(
+                Connection con = getConnection();
+                PreparedStatement pstm = con.prepareStatement("select * from anunturi");
+                //Executam query si bagam tot ce primim in acest result set
+                ResultSet rs = pstm.executeQuery()
+        ) {
+
+            //Daca avem rezultat, il si folosim
+            while(rs.next()){
+                anunturiToReturn.add(new Anunt(
+                        rs.getInt("id_anunt"),
+                        rs.getInt("id_user"),
+                        rs.getString("descriere"),
+                        rs.getString("titlu"),
+                        rs.getFloat("pret_inceput"),
+                        rs.getFloat("pret_actual"),
+                        rs.getTimestamp("data_incepere"),
+                        rs.getTimestamp("data_sfarsit"),
+                        rs.getBoolean("activ"),
+                        rs.getInt("id_user_top_bid")
+                ));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return anunturiToReturn;
     }
 
     @Override
     public void updateAnunt(Anunt anuntToUpdate) {
 
+        try(
+                Connection con = getConnection();
+                PreparedStatement pstm = updateAnuntPS(anuntToUpdate, con)
+        ){
+
+            int i = pstm.executeUpdate();
+
+            if(i > 0){
+                System.out.println("S-a realizat update pentru anuntul " + anuntToUpdate.getId_anunt());
+            }else{
+                System.out.println("Nu s-a realizat update pentru anuntul " + anuntToUpdate.getId_anunt());
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    private PreparedStatement updateAnuntPS(Anunt anunt, Connection con) throws SQLException {
+        PreparedStatement pstm = con.prepareStatement("update anunturi set descriere = ?, titlu = ?, activ = ? where id_anunt = ?");
+
+        if(pstm != null){
+            pstm.setString(1, anunt.getDescriere());
+            pstm.setString(2, anunt.getTitlu());
+            pstm.setBoolean(3, anunt.getActiv());
+            pstm.setInt(4, anunt.getId_anunt());
+        }
+
+        return pstm;
+    }
+
+    public void pariaza(Anunt anunt, User user, float suma){
+
+        try(
+                Connection con = getConnection();
+                PreparedStatement pstm = pariazaPS(anunt, user, suma, con);
+        ){
+
+            int i = pstm.executeUpdate();
+            if( i > 0 ){
+                System.out.println("S-a pariat " + suma + " in anuntul  " + anunt.getId_anunt() + " de catre " + user.getId_user());
+            }else{
+                System.out.println("Nu s-a pariat  " +  suma);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    PreparedStatement pariazaPS(Anunt anunt, User user,float suma, Connection con) throws SQLException {
+        PreparedStatement pstm = con.prepareStatement("update anunturi set id_user_top_bid = ?, pret_actual = ? where id_anunt = ?");
+
+        if(pstm != null){
+            pstm.setInt(1, user.getId_user());
+            pstm.setFloat(2, suma);
+            pstm.setInt(3, anunt.getId_anunt());
+        }
+
+        return pstm;
     }
 }

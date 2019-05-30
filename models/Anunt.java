@@ -39,7 +39,15 @@ public class Anunt {
         this.descriere = descriere;
         this.pret_inceput = pret_inceput;
         this.data_final = data_final;
+        this.activ = true;
         this.poza = poza;
+    }
+
+    public Anunt(int id_anunt, String titlu, String descriere, Boolean activ) {
+        this.id_anunt = id_anunt;
+        this.titlu = titlu;
+        this.descriere = descriere;
+        this.activ = activ;
     }
 
     //Geteri/ Seteri
