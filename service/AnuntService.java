@@ -1,7 +1,9 @@
 package service;
 
+
 import models.Anunt;
 
+import java.util.List;
 
 public interface AnuntService {
 
@@ -15,9 +17,9 @@ public interface AnuntService {
     void deleteAnunt(int id);
 
     //Gaseste un anunt dupa titlu
-    Anunt findByid_anunt(String username);
+    Anunt findById(int id);
 
     //gaseste anunturi ???????
     List<Anunt> getAnunturi();
- }
+}
 

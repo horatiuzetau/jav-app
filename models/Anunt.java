@@ -1,15 +1,8 @@
 package models;
 
-import java.sql.Timestamp;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
+import java.awt.image.BufferedImage;
+import java.sql.Timestamp;
 
 public class Anunt {
 
@@ -17,50 +10,67 @@ public class Anunt {
     private int id_user;
     private String titlu;
     private String descriere;
-    private int pret_inceput;
-    private int pret_actual;
+    private float pret_inceput;
+    private float pret_actual;
     private Timestamp data_incepere;
     private Timestamp data_final;
+    private Boolean activ;
+    private int user_high_bid;
+
+    //To do
     private BufferedImage poza;
 
-
-    //constructor cu ID
-    public Anunt(int id_anunt, int id_user, String titlu, String descriere, int pret_inceput, int pret_actual, Timestamp data_incepere, Timestamp data_final, BufferedImage poza) {
+    public Anunt(int id_anunt, int id_user, String descriere, String titlu, float pret_inceput, float pret_actual, Timestamp data_incepere, Timestamp data_final, Boolean activ, int user_high_bid) {
         this.id_anunt = id_anunt;
         this.id_user = id_user;
         this.titlu = titlu;
         this.descriere = descriere;
-        this. pret_inceput =  pret_inceput;
+        this.pret_inceput = pret_inceput;
         this.pret_actual = pret_actual;
         this.data_incepere = data_incepere;
         this.data_final = data_final;
-        this.poza = poza;
+        this.activ = activ;
+        this.user_high_bid = user_high_bid;
     }
 
-    //constructor fara ID
-    public Anunt(int id_user, String titlu, String descriere, int pret_inceput, int pret_actual, Timestamp data_incepere, Timestamp data_final, BufferedImage poza) {
+    public Anunt(int id_user, String titlu, String descriere, float pret_inceput, Timestamp data_final, BufferedImage poza) {
         this.id_user = id_user;
         this.titlu = titlu;
         this.descriere = descriere;
-        this. pret_inceput =  pret_inceput;
-        this.pret_actual = pret_actual;
-        this.data_incepere = data_incepere;
+        this.pret_inceput = pret_inceput;
         this.data_final = data_final;
         this.poza = poza;
     }
 
     //Geteri/ Seteri
 
+
+    public Boolean getActiv() {
+        return activ;
+    }
+
+    public void setActiv(Boolean activ) {
+        this.activ = activ;
+    }
+
+    public int getUser_high_bid() {
+        return user_high_bid;
+    }
+
+    public void setUser_high_bid(int user_high_bid) {
+        this.user_high_bid = user_high_bid;
+    }
+
     public int getId_anunt() {
         return id_anunt;
     }
 
-    public void setId_anunt(int id_aunt) {
+    public void setId_anunt(int id_anunt) {
         this.id_anunt = id_anunt;
     }
 
-    public int getId_anunt() {
-        return id_anunt;
+    public int getId_user() {
+        return id_user;
     }
 
     public void setId_user(int id_user) {
@@ -80,33 +90,32 @@ public class Anunt {
     }
 
     public void setDescriere(String descriere) {
-        this.descriere =    descriere;
+        this.descriere = descriere;
     }
 
-    public int getPret_inceput() {
+    public float getPret_inceput() {
         return pret_inceput;
     }
 
     public void setPret_inceput(int pret_inceput) {
-        this.pret_inceput = pret_inceput   ;
+        this.pret_inceput = pret_inceput;
     }
 
-    public int getPret_actual() {
+    public float getPret_actual() {
         return pret_actual;
     }
 
     public void setPret_actual(int pret_actual) {
-        this.pret_actual= pret_actual;
+        this.pret_actual = pret_actual;
     }
 
-    public Timestamp getData_inscriere() {
-        return data_inscriere;
+    public Timestamp getData_incepere() {
+        return data_incepere;
     }
 
-    public void setData_inscriere(Timestamp data_inscriere) {
-        this.data_inscriere = data_inscriere;
+    public void setData_incepere(Timestamp data_incepere) {
+        this.data_incepere = data_incepere;
     }
-
 
     public Timestamp getData_final() {
         return data_final;
@@ -115,10 +124,9 @@ public class Anunt {
     public void setData_final(Timestamp data_final) {
         this.data_final = data_final;
     }
-}
 
-    public BufferedImage poza() {
-        return poza();
+    public BufferedImage getPoza() {
+        return poza;
     }
 
     public void setPoza(BufferedImage poza) {
