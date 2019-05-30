@@ -10,6 +10,7 @@ Java Android Application + SQL (TEAM)
   * Checkout system
 ### Teodor:
   * Articles management service: add/ remove/ update/ list
+  * Automation test
 
 # Working process (in RO)
 ### Horatiu
@@ -34,3 +35,7 @@ Cand facem click pe un anunt din aceasta lista se deschide anuntul propiu zis ca
 
 
 ### Teo
+
+Odata ce a fost creeata baza de date am inceput prin a construi obiecul Anunt care mapeaza campurile din baza ded date. Apoi interfata de UserService si UserServiceImpl ca implementare a ei.
+Am creeat functiile necesare , update, add ,delete, findById .Am testat functiile creeate si conexiunea si inereactiunea cu baza de date
+Am incercat sa fac automation test dar am intampinat probleme la transferul proiectului si nu am reusit sa le rezolv 
