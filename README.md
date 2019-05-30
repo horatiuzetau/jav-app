@@ -25,6 +25,8 @@ Apoi am implementat functiile de adaugare, stergere, update, get, pe rand. Pentr
 
 Dupa ce am terminat si testat intrarea cu baze de date, am facut functia de LOGIN care ia ca parametrii Username si Parola, cauta user-ul al carui username coincide cu cel dat. Comparam parolele, iar in functie de rezultat stabilim daca s-a realizat Login-ul sau nu. Am gasit o functie pe internet care sa cripteze parola - MD5. Inainte sa fie bagata in baza de date, aceasta este criptata, iar cand se compara este ceva de genul (deja criptata)parolaBazaDate == md5(parolaIntrodusa), adica se compara hashurile, nu se decripteaza cum as fi crezut.
 
+#### SUPER BUG! Cand am transferat proiectul de la Alex la mine pentru prezentare, acesta nu ruleaza. Se builduieste frumos, dar nu ruleaza nimic. Foarte urat. Am stat o ora jumatate incercand sa gasesc solutia, dar nimic. madafaca
+
 ### Alex
 
 In android studio am creat pagina de start care este un layout care contine o lista de anunturi cate unul pe rand , un anunt este alcatuit dintr o imagine si un txt in drapta ,imaginea fiind una dintre imaginele anuntului iar txt-ul fiind o parte din descriere.
