@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService {
         return DriverManager.getConnection(url,user,pass);
     }
 
-    //Adauga user
     @Override
     public void addUser(User userToAdd) {
 
@@ -224,6 +223,7 @@ public class UserServiceImpl implements UserService {
         return pstm;
     }
 
+    //Schimba parola
     @Override
     public void changePassword(String parolaNoua, int id) {
         //Pornim conexiunea si creem PreparedStatement
@@ -259,7 +259,8 @@ public class UserServiceImpl implements UserService {
         return pstm;
     }
 
-
+    //Returneaza userul daca informatiile pentru credentiale introduse sunt corecte
+    //Face login pe scurt:))
     @Override
     public User loginFunction(String username, String parola) {
         //Cautam userul cu username respectiv si luam toate info din DB in "user"
@@ -313,7 +314,5 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(e);
         }
     }
-
-
 
 }

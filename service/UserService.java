@@ -1,5 +1,6 @@
 package service;
 
+import models.Anunt;
 import models.User;
 
 public interface UserService {
@@ -24,5 +25,8 @@ public interface UserService {
 
     //Functia de login
     User loginFunction(String username, String parola);
+
+    //User pariaza in anunt cu suma respectiva
+    void pariaza(Anunt anunt, User user, float suma);
 
 }
